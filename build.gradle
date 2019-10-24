@@ -1,0 +1,16 @@
+plugins {
+    id "com.athaydes.osgi-run" version "1.6.0"
+}
+
+group 'ch.obermuhlner.scriptengine.example.run'
+version '0.0.1'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+runOsgi {
+    bundles += subprojects
+}

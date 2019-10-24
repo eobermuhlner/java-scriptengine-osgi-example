@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+version = '0.0.1'
+archivesBaseName = 'scriptengine-example'
+
+ext {
+    moduleName = "ch.obermuhlner.scriptengine.example"
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile 'ch.obermuhlner:java-scriptengine:1.2.0-backport_java8'
+    compile group: 'org.osgi', name: 'org.osgi.core', version: '6.0.0'
+
+}
+
+jar {
+    manifest {
+        attributes(
+                "Automatic-Module-Name": moduleName,
+                "Bundle-ManifestVersion": 2,
+                "Bundle-Name": archivesBaseName,
+                "Bundle-SymbolicName": moduleName,
+                "Bundle-Version": version,
+                "Bundle-Activator": "ch.obermuhlner.scriptengine.example.Activator",
+                "Import-Package": "" +
+                        "javax.script," +
+                        "org.osgi.framework",
+                        "ch.obermuhlner.scriptengine.java, " +
+                        "ch.obermuhlner.scriptengine.java.constructor, " +
+                        "ch.obermuhlner.scriptengine.java.execution",
+                "Export-Package": "ch.obermuhlner.scriptengine.example")
+    }
+}
+
